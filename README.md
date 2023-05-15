@@ -6,8 +6,10 @@
 / __  / / /_  / /__  / __  /  / //_/
 \____/  \__/  \___/  \____/  /_/
 ```
-### the 3 things you need:
+### the 4 things you need:
 # [[ VULKAN ]](https://vulkan.lunarg.com/) *(graphics API)*
+
+# [[ GIT ]](https://git-scm.com/downloads) *(github repo downloader)*
 
 # [[ CMAKE ]](https://cmake.org/download/) *(C99 project maker)*
 
