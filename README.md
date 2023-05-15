@@ -6,9 +6,9 @@
 / __  / / /_  / /__  / __  /  / //_/
 \____/  \__/  \___/  \____/  /_/
 ```
+### the 3 things you need:
+# [VULKAN](https://vulkan.lunarg.com/)
 
-# https://vulkan.lunarg.com/
+# [CMAKE](https://cmake.org/download/)
 
-# https://cmake.org/download/
-
-# https://visualstudio.microsoft.com/downloads/
+# [VISUAL STUDIO](https://visualstudio.microsoft.com/downloads/)
