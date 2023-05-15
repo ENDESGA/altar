@@ -7,8 +7,8 @@
 \____/  \__/  \___/  \____/  /_/
 ```
 ### the 3 things you need:
-# [VULKAN](https://vulkan.lunarg.com/)
+# [[ VULKAN ]](https://vulkan.lunarg.com/) *(graphics API)*
 
-# [CMAKE](https://cmake.org/download/)
+# [[ CMAKE ]](https://cmake.org/download/) *(C99 project maker)*
 
-# [VISUAL STUDIO](https://visualstudio.microsoft.com/downloads/)
+# [[ VISUAL STUDIO ]](https://visualstudio.microsoft.com/downloads/) *(editor, compiler, debugger)*
