@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
- 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -137,14 +137,51 @@ void add_packages(const Package packages[], int num_packages, const char* projec
 #endif
 
 int main() {
-    run_command("mode con: cols=64 lines=16");
+    //run_command("mode con: cols=64 lines=16");
+    if (system("git --version") != 0) {
+        system("cls");
+        set_color(CYAN);
+        printf(" GIT is not installed\n");
+        set_color(MAGENTA);
+        printf(" please install it to use altar\n");
+        set_color(YELLOW);
+        printf(" press Enter to exit...\n");
+        getchar();
+        return 0;
+    } else system("cls");
+
+    if (system("cmake --version") != 0) {
+        system("cls");
+        set_color(CYAN);
+        printf(" CMAKE is not installed\n");
+        set_color(MAGENTA);
+        printf(" please install it to use altar\n");
+        set_color(YELLOW);
+        printf(" press Enter to exit...\n");
+        getchar();
+        return 0;
+    } else system("cls");
+
+    if (getenv("VULKAN_SDK") == NULL) {
+        system("cls");
+        set_color(CYAN);
+        printf(" VULKAN is not installed\n");
+        set_color(MAGENTA);
+        printf(" please install it to use altar\n");
+        set_color(YELLOW);
+        printf(" press Enter to exit...\n");
+        getchar();
+        return 0;
+    } else system("cls");
 
     set_color(CYAN);
     printf(" :::.                    __    __\n");
-    printf("                ____    / /   / /_   ____     ___\n");
+    set_color(MAGENTA);
+    printf(" v1.1");
+    set_color(CYAN);printf("           ____    / /   / /_   ____     ___\n");
     printf("               _\\__ \\  / /   / __/  _\\__ \\   / _ \\\n");
     printf("              / __  / / /_  / /__  / __  /  / //_/\n");
-    printf("              \\____/  \\__/  \\___/  \\____/  /_/\n");
+    printf("              \\__/\\_\\ \\__/  \\___/  \\__/\\_\\ /_/\n");
     set_color(MAGENTA);
     printf("    ________________________________________________________\n");
     printf("   / ______________________________________________________ \\\n");
@@ -207,6 +244,9 @@ int main() {
     printf(" project creation complete.\n");
 
     set_color(CYAN);
+    printf(" %s project made in %s\\build\\\n", projectName, projectName);
+
+    set_color(MAGENTA);
     printf(" press Enter to exit...\n");
     getchar();
 
