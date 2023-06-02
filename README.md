@@ -20,8 +20,8 @@
 
 (make sure to add cmake to PATH)
 
-# [***[ VISUAL STUDIO ]***](https://visualstudio.microsoft.com/downloads/) *(editor, compiler, debugger)*
-![image](https://github.com/ENDESGA/altar/assets/38831818/e6c7ac05-c955-42e9-b29e-26a9589a896c)
+# [***[ LLVM ]***](https://github.com/llvm/llvm-project/releases/tag/llvmorg-16.0.0) *(if you don't have a compiler installed)*
+![image](https://github.com/ENDESGA/altar/assets/38831818/52380efb-f52a-4548-b39d-149342ce48c7)
 
-(make sure to install the right compilers)
+
 
