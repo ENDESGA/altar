@@ -1,20 +1,23 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.20)
 
+project(altar C)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/)
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "" FORCE)
 set(CMAKE_SUPPRESS_REGENERATION TRUE)
 
-set(CMAKE_C_STANDARD 99)
+set(SOURCE_DIR "src")
+set(INCLUDE_DIR "inc")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native")
+file(GLOB SOURCES "${SOURCE_DIR}/*.c")
 
-set(PROJECT_NAME "altar" CACHE STRING "PROJECT_NAME")
-set(SOURCES "main.c" CACHE STRING "SOURCES")
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-project(${PROJECT_NAME} C)
+target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 
-IF (WIN32)
-    add_executable(${PROJECT_NAME} ${SOURCES})
+if (WIN32)
     set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".exe")
-ELSEIF (UNIX)
-    add_executable(${PROJECT_NAME} ${SOURCES})
+elseif (UNIX)
     set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".bin")
-ENDIF ()
+endif ()
