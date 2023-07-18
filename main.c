@@ -18,18 +18,6 @@ typedef struct {
 
 #define run_command( _ ) system( _ )
 
-int count_substrings( const char* str, const char* sub ) {
-	int count = 0;
-	const char* temp = str;
-
-	while( ( temp = strstr( temp, sub ) ) != NULL ) {
-		count++;
-		temp += strlen( sub );
-	}
-
-	return count;
-}
-
 char* optimized_strstr( const char* haystack, const char* needle ) {
 	if( !*needle ) return (char*)haystack;
 	for( ; *haystack; ++haystack ) {
@@ -42,6 +30,20 @@ char* optimized_strstr( const char* haystack, const char* needle ) {
 	}
 	return NULL;
 }
+
+int count_substrings( const char* str, const char* sub ) {
+	int count = 0;
+	const char* temp = str;
+
+	while( ( temp = optimized_strstr( temp, sub ) ) != NULL ) {
+		count++;
+		temp += strlen( sub );
+	}
+
+	return count;
+}
+
+
 
 void replace_in_file( const char* filename, const char* find, const char* replace ) {
 	FILE* file = fopen( filename, "rb" );
@@ -315,7 +317,7 @@ int MAIN() {
 		set_color( CYAN );
 		printf( " VULKAN is not installed\n" );
 		set_color( MAGENTA );
-		printf( " please install it to use altar\n" );
+		printf( " please install VULKAN to use hept\n" );
 		set_color( YELLOW );
 		printf( " press Enter to exit...\n" );
 		getchar();
@@ -327,7 +329,7 @@ int MAIN() {
 	set_color( CYAN );
 	printf( " :::.                    __    __\n" );
 	set_color( MAGENTA );
-	printf( " v1.3" );
+	printf( " v1.4" );
 	set_color( CYAN );
 	printf( "           ____    / /   / /_   ____     ___\n" );
 	printf( "               _\\__ \\  / /   / __/  _\\__ \\   / _ \\\n" );
@@ -369,7 +371,6 @@ int MAIN() {
 	snprintf( name, sizeof( name ), "%s/%s", get_directory(), projectName );
 	snprintf( ninja_path, sizeof( ninja_path ), "%s/%s/out/ninja/ninja", get_directory(), projectName );
 #endif
-	
 
 	char cmd[ CMD_BUF_SIZE ];
 
@@ -418,7 +419,7 @@ int MAIN() {
 
 	set_color( CYAN );
 #ifdef _WIN32
-	snprintf( cmd, sizeof( cmd ), "mkdir %s && cd %s && git init && mkdir inc src out && echo.> README.md && echo.> src\\main.c", projectName, projectName );
+	snprintf( cmd, sizeof( cmd ), "mkdir %s && cd %s && git init && mkdir inc src out && echo.> src\\main.c", projectName, projectName );
 	run_command( cmd );
 #else
 	// Arch Linux
@@ -452,12 +453,6 @@ int MAIN() {
 
 	//
 
-	set_color( MAGENTA );
-	printf( " press Enter to continue...\n" );
-	getchar();
-	
-	//
-	
 #endif
 	set_color( YELLOW );
 #ifdef _WIN32
