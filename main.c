@@ -430,7 +430,7 @@ int MAIN() {
 
 	Package packages[] = {
 	  { "c7h16", "https://github.com/ENDESGA/c7h16.git", "main", { "c7h16.h", ".clang-format", NULL } },
-	  { "Hephaestus", "https://github.com/ENDESGA/Hephaestus.git", "main", { "hephaestus.h", NULL } },
+	  { "Hephaestus", "https://github.com/ENDESGA/Hephaestus.git", "main", { "Hephaestus.h", NULL } },
 	  { "hept", "https://github.com/ENDESGA/hept.git", "main", { "hept.h", "CMakeLists.txt", NULL } },
 #ifdef _WIN32
 	  { "altar", "https://github.com/ENDESGA/altar.git", "main", { "out\\ninja\\ninja.exe", NULL } },
@@ -445,10 +445,10 @@ int MAIN() {
 
 	set_color( MAGENTA );
 #ifdef _WIN32
-	snprintf( cmd, sizeof( cmd ), "cd %s && move c7h16.h inc\\c7h16.h && move hephaestus.h inc\\hephaestus.h && move hept.h inc\\hept.h && mkdir inc\\Volk && move volk.h inc\\Volk\\volk.h && move volk.c inc\\Volk\\volk.c", projectName );
+	snprintf( cmd, sizeof( cmd ), "cd %s && move c7h16.h inc\\c7h16.h && move Hephaestus.h inc\\Hephaestus.h && move hept.h inc\\hept.h && mkdir inc\\Volk && move volk.h inc\\Volk\\volk.h && move volk.c inc\\Volk\\volk.c", projectName );
 	run_command( cmd );
 #else
-	snprintf( cmd, sizeof( cmd ), "cd %s && mv c7h16.h inc/c7h16.h && mv hephaestus.h inc/hephaestus.h && mv hept.h inc/hept.h && mkdir -p inc/Volk && mv volk.h inc/Volk/volk.h && mv volk.c inc/Volk/volk.c", projectName );
+	snprintf( cmd, sizeof( cmd ), "cd %s && mv c7h16.h inc/c7h16.h && mv Hephaestus.h inc/Hephaestus.h && mv hept.h inc/hept.h && mkdir -p inc/Volk && mv volk.h inc/Volk/volk.h && mv volk.c inc/Volk/volk.c", projectName );
 	run_command( cmd );
 
 	//
