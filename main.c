@@ -163,13 +163,21 @@ char* get_directory() {
 	char path[ 1024 ];
 	char* parent_dir = malloc( 1024 * sizeof( char ) );
 
-#ifdef _WIN32
+#if defined(_WIN32)
 	GetModuleFileNameA( NULL, path, sizeof( path ) );
 	char* last_slash = strrchr( path, '\\' );
 	if( last_slash ) {
 		*last_slash = '\0';// remove everything after last slash (including it)
 	}
 	strncpy( parent_dir, path, 1024 );
+#elif defined(__APPLE__)
+    uint32_t s = sizeof( path );
+    if (_NSGetExecutablePath( path, &s ) != 0 ) {
+        // Buffer size is too small.
+        free( parent_dir );
+        return NULL;
+    }
+    strncpy( parent_dir, dirname( path ), 1024 );
 #else
 	ssize_t len = readlink( "/proc/self/exe", path, sizeof( path ) - 1 );
 	if( len != -1 ) {
@@ -364,9 +372,12 @@ int MAIN() {
 
 	char ninja_path[ CMD_BUF_SIZE ];
 	char name[ CMD_BUF_SIZE ];
-#ifdef _WIN32
+#if defined(_WIN32)
 	snprintf( name, sizeof( name ), "%s\\%s", get_directory(), projectName );
 	snprintf( ninja_path, sizeof( ninja_path ), "%s\\%s\\out\\ninja\\ninja.exe", get_directory(), projectName );
+#elif defined (__APPLE__)
+	snprintf( name, sizeof( name ), "%s/%s", get_directory(), projectName );
+	snprintf( ninja_path, sizeof( ninja_path ), "%s/%s/out/ninja/ninja.out", get_directory(), projectName );
 #else
 	snprintf( name, sizeof( name ), "%s/%s", get_directory(), projectName );
 	snprintf( ninja_path, sizeof( ninja_path ), "%s/%s/out/ninja/ninja", get_directory(), projectName );
@@ -432,8 +443,10 @@ int MAIN() {
 	  { "c7h16", "https://github.com/ENDESGA/c7h16.git", "main", { "c7h16.h", ".clang-format", NULL } },
 	  { "Hephaestus", "https://github.com/ENDESGA/Hephaestus.git", "main", { "Hephaestus.h", NULL } },
 	  { "hept", "https://github.com/ENDESGA/hept.git", "main", { "hept.h", "CMakeLists.txt", NULL } },
-#ifdef _WIN32
+#if defined(_WIN32)
 	  { "altar", "https://github.com/ENDESGA/altar.git", "main", { "out\\ninja\\ninja.exe", NULL } },
+#elif defined (__APPLE__)
+	  { "altar", "https://github.com/Carbone13/altar.git", "main", { "out/ninja/ninja.out", NULL } },
 #else
 	  { "altar", "https://github.com/ENDESGA/altar.git", "main", { "out/ninja/ninja", NULL } },
 #endif
