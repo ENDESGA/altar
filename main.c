@@ -446,7 +446,7 @@ int MAIN() {
 #if defined(_WIN32)
 	  { "altar", "https://github.com/ENDESGA/altar.git", "main", { "out\\ninja\\ninja.exe", NULL } },
 #elif defined (__APPLE__)
-	  { "altar", "https://github.com/Carbone13/altar.git", "main", { "out/ninja/ninja.out", NULL } },
+	  { "altar", "https://github.com/Carbone13/altar.git", "osx-support", { "out/ninja/ninja.out", NULL } },
 #else
 	  { "altar", "https://github.com/ENDESGA/altar.git", "main", { "out/ninja/ninja", NULL } },
 #endif
