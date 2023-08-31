@@ -1,4 +1,4 @@
-[DOWNLOAD THE LATEST HERE](https://github.com/ENDESGA/altar/releases/tag/release-1.4)
+[DOWNLOAD THE LATEST HERE](https://github.com/ENDESGA/altar/releases/tag/release-1.5)
 ```
              __    __
             / /   / /
