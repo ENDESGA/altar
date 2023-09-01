@@ -130,11 +130,11 @@ int main()
 
 	// start CMake
 #ifdef _WIN32
-		system(format("cd {} && cmake -DCMAKE_MAKE_PROGRAM={} -G \"Ninja Multi-Config\" -B out", project_name.string(), ninja_path.string()).c_str());
+		system(format("cd {} && cmake -DCMAKE_MAKE_PROGRAM=\"{}\" -G \"Ninja Multi-Config\" -B out", project_name.string(), ninja_path.string()).c_str());
 		system(format("cd {} && echo cmake --build out --config Debug > build_debug.bat", project_name.string()).c_str());
 		system(format("cd {} && echo cmake --build out --config Release > build_release.bat", project_name.string()).c_str());
 #else
-		system(format("cd {} && chmod +x {} && cmake -DCMAKE_MAKE_PROGRAM={} -G \"Ninja Multi-Config\" -B out", project_name.string(), ninja_path.string(), ninja_path.string()).c_str());
+		system(format("cd {} && chmod +x {} && cmake -DCMAKE_MAKE_PROGRAM=\"{}\" -G \"Ninja Multi-Config\" -B out", project_name.string(), ninja_path.string(), ninja_path.string()).c_str());
 		system(format("cd {} && echo 'cmake --build out --config Debug' > build_debug.sh", project_name.string()).c_str());
 		system(format("cd {} && echo 'cmake --build out --config Release' > build_release.sh", project_name.string()).c_str());
 		system(format("cd {} && chmod +x build_debug.sh build_release.sh", project_name.string()).c_str());
